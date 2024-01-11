@@ -77,3 +77,6 @@ MVPリリース時
 ・楽天市場APIを使用し、自動給水の商品表示
 
 '楽天市場API'を使用し、水やりを3回以上忘れているユーザーを判別し、その特定のユーザーに自動給水のディスペンサーなどといった水やりに関する便利な商品を表示する。
+
+
+画面遷移図：https://www.figma.com/file/tUZXLraaZmcQnXzT7DWKBo/%E4%B9%85%E5%8F%B8%E6%8B%93%E5%BC%A5%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?type=design&node-id=0%3A1&mode=design&t=XOn0nGxZ3PAM7Y7N-1
