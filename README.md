@@ -80,3 +80,5 @@ MVPリリース時
 
 
 画面遷移図：https://www.figma.com/file/tUZXLraaZmcQnXzT7DWKBo/%E4%B9%85%E5%8F%B8%E6%8B%93%E5%BC%A5%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-team-library?type=design&node-id=0%3A1&mode=design&t=XOn0nGxZ3PAM7Y7N-1
+
+ER図：[![Image from Gyazo](https://i.gyazo.com/03e1351fb287d36094db6d2174eeb5fa.png)](https://gyazo.com/03e1351fb287d36094db6d2174eeb5fa)
