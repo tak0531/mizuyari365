@@ -1,0 +1,2 @@
+class PlantsAction < ApplicationRecord
+end
