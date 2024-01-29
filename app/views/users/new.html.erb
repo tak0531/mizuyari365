@@ -1,0 +1,28 @@
+<div class="card w-full max-w-lg bg-base-100 shadow-xl mx-auto">
+    <div class="card-body">
+        <%= form_with(model:@user) do |f| %>
+        <div class="mb-3">
+          <%= f.label :last_name, class: "form-label" %>
+          <%= f.text_field :last_name, class: "form-control", id: "user_last_name" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :first_name, class: "form-label" %>
+          <%= f.text_field :first_name, class: "form-control", id: "user_first_name" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, class: "form-control", id: "user_email" %>
+
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, class: "form-label" %>
+          <%= f.password_field :password, class: "form-control", id: "user_password" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password_confirmation, class: "form-label" %>
+          <%= f.password_field :password_confirmation, class: "form-control", id: "user_password_confirmation" %>
+        </div>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>

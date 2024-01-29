@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root "staticpages#top"
+  get "/terms_of_service" => "staticpages#terms"
+  get "/privacy_policy" => "staticpages#policy"
+
+  resources :users
 end
