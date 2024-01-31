@@ -7,10 +7,8 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      puts '成功'
       redirect_to root_path
     else
-      puts 'ミス'
       render :new
     end
   end
