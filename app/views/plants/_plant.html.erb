@@ -1,0 +1,15 @@
+<div class="bg-white shadow-md rounded-lg overflow-hidden items-center p-2">
+    <% if plant.image.attached? %>
+      <%= image_tag( plant.image, class:'my-2 rounded-lg w-32 h-32') %>
+    <% else %>
+      <%= image_tag('top.webp', class:'my-2 rounded-lg', size: '900x1600') %>
+    <% end %>
+    <p>植物名：<%= plant.name %></p>
+    <p>科名：<%= plant.family %></p>
+    <p>こんにちは</p>
+    <div>
+        <%= link_to '編集', '#', class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+        <%= link_to '水やり完', '#', class:'bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+        <%= link_to '削除', '#', class:'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+    </div>
+</div>

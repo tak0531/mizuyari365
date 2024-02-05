@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.fixed-bottom {
-    position: fixed;
-    bottom: 0;
-  }
 
 .footerFixed{
     min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
@@ -25,6 +21,40 @@ footer{
     text-align: center;
 }
 
-.mt-132{
-  margin-top: 33rem;
+.mt-116{
+  margin-top: 29rem;
+}
+
+.mypage-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 26px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+.mypage-btn-container {
+  position: relative;
+}
+
+.mypage-btn-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mypage-dropdown a {
+  color: #5c3e26;
+  text-decoration: none;
+}
+
+.mypage-dropdown a:hover {
+  color: #8b5c38;
+}
+
+.category-container:hover {
+  cursor: pointer;
 }

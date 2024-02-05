@@ -8,11 +8,9 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>
 
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col">
     <div class="footerFixed">
       <% if logged_in? %>
         <%= render 'shared/header' %>
