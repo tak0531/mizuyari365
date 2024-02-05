@@ -1,12 +1,8 @@
-//= require rails-ujs
-//= require jquery3
-//= require popper
-//= require_tree .
-
 import "@hotwired/turbo-rails"
+import "./Script.js"
 
 
-console.log('こんにちは')
+console.log('いいねいいね')
 
 
 document.addEventListener("DOMContentLoaded", function() {
