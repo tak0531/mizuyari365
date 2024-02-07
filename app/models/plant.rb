@@ -1,6 +1,6 @@
 class Plant < ApplicationRecord
   has_many :likes
-  has_many :plants_actions
+  has_many :plants_actions, dependent: :destroy
   belongs_to :user
 
 

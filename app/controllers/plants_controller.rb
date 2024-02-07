@@ -38,6 +38,13 @@ class PlantsController < ApplicationController
   end
 
   def destroy
+    @plant = Plant.find(params[:id])
+
+    if @plant.destroy
+        redirect_to plants_path
+    else
+        render :index, status: :see_other
+    end
   end
 
   private
