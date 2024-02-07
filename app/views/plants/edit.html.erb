@@ -1,7 +1,7 @@
 <div class="container mx-auto px-4 py-8">
     <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
       <div class="px-6 py-4">
-        <h2 class="text-2xl font-bold mb-4">植物登録</h2>
+        <h2 class="text-2xl font-bold mb-4">植物編集</h2>
         <%= form_with model:@plant do |form| %>
           <div class="mb-4">
             <%= form.label :name, class: 'block text-gray-700 text-sm font-bold mb-2' do %>
@@ -10,17 +10,11 @@
             <%= form.text_field :name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %> 
           </div>
           <div class="mb-4">
-            <%= form.label :last_watered, class: 'block text-gray-700 text-sm font-bold mb-2' do %>
-              最終水やり日
-            <% end %>
-            <%= form.date_field :last_watered, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
-          </div>
-          <div class="mb-4">
             <%= form.label :content, class: 'block text-gray-700 text-sm font-bold mb-2' do %>
               メモ
             <% end %>
             <%= form.text_area :content, placeholder: '例：少し育った', class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
-        </div>
+          </div>
           <div class="mb-4">
             <%= form.label :family, class: 'block text-gray-700 text-sm font-bold mb-2' do %>
               科
@@ -40,5 +34,5 @@
           </div>
         <% end %>
       </div>
-    </div> 
-</div>
+    </div>
+  </div>

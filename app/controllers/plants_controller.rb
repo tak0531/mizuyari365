@@ -1,9 +1,10 @@
 class PlantsController < ApplicationController
   def index
-    @plants = Plant.all
+    @plants = Plant.all.order(created_at: :desc)
   end
 
   def show
+    @plant = Plant.find(params[:id])
   end
 
   def new
@@ -14,17 +15,26 @@ class PlantsController < ApplicationController
     @plant = current_user.plants.build(plant_params)
 
     if @plant.save
+        @plant.plants_actions.create(last_watered: params[:plant][:last_watered], user_id: current_user.id)
         redirect_to plants_path
-    else
+      else
         render :new
-    end
+      end
 
   end
 
   def edit
+    @plant = Plant.find(params[:id])
   end
 
   def update
+    @plant = Plant.find(params[:id])
+  
+    if @plant.update(plant_params)
+      redirect_to plant_path
+    else
+      render :edit
+    end
   end
 
   def destroy
