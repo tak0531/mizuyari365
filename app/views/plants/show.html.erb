@@ -1,0 +1,46 @@
+<div class="flex min-h-screen bg-green-200 overflow-hidden ">
+    <div class="container p-4 mx-auto overflow-hidden">
+        <div class="mx-auto bg-white shadow-md rounded-lg  mb-12">
+            <div class="border p-2 text-xl font-bold">
+                <h2><%= @plant.name %></h2>
+            </div>
+
+          <!-- 植物の画像 -->
+            <div class="w-full p-2">
+                <% if @plant.image.attached? %>
+                    <%= image_tag(@plant.image, class:'object-cover mx-auto', width: '50%', height: '30%') %>
+                <% else %>
+                    <%= image_tag('top.webp', class:'object-cover max-w-64 max-h-64 mx-auto h-64') %>
+                <% end %>
+            </div>
+
+            <div class="border p-2">
+                <div class="flex justify-between items-center">
+                    <div class="mr-4">
+                        水やり推奨日：<%= @plant.plants_actions.last&.last_watered %>
+                    </div>
+                    <div class="p-2">
+                        <p class="text-gray-600">いいね(本リリース)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+          <!-- 植物の詳細情報 -->
+        <div class="flex bg-green-200 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-2 row-span-5 mx-4 mb-12">
+            <div class="bg-white shadow-md rounded-lg overflow-hidden overflow-scroll items-center p-2">
+                <h2 class="text-xl mb-2 overflow-scroll overflow-hidden">メモ：<%= @plant.content %></h2>
+            </div>
+
+            <div class="bg-white shadow-md rounded-lg overflow-visible items-center p-2">
+                <p class="text-gray-600">コメント(本リリース)</p>
+            </div>
+        </div>
+
+        <div class="mb-6 flex justify-end">
+            <%= link_to '編集', edit_plant_path(@plant), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2' %>
+            <%= link_to '削除', '#', class:'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+        </div>
+    </div>
+</div>

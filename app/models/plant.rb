@@ -1,6 +1,8 @@
 class Plant < ApplicationRecord
   has_many :likes
+  has_many :plants_actions
   belongs_to :user
+
 
   has_one_attached:image
 
