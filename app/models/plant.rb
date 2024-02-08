@@ -11,6 +11,14 @@ class Plant < ApplicationRecord
   validates :family, presence: true
   validates :name, presence: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["image_attachment", "image_blob", "likes", "plants_actions", "user"]
+  end
+
   def image_content_type
     if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/gif])
       errors.add(:image, '：ファイル形式が、JPEG, PNG, GIF以外になってます。ファイル形式をご確認ください。')

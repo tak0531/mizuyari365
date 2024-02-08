@@ -54,6 +54,7 @@ gem "image_processing", "~> 1.2"
 
 gem "sorcery"
 
+gem 'ransack'
 
 
 group :development, :test do

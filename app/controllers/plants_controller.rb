@@ -1,6 +1,8 @@
 class PlantsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
+    
   def index
-    @plants = Plant.all.order(created_at: :desc)
+    @plants = current_user.plants.all.order(created_at: :desc)
   end
 
   def show
@@ -47,9 +49,20 @@ class PlantsController < ApplicationController
     end
   end
 
+  def search
+    @q = Plant.ransack(params[:q])
+    @plants = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def plant_params
     params.require(:plant).permit(:name, :content, :image, :user_id, :family)
+  end
+
+  def correct_user
+    @plant = Plant.find(params[:id])
+    @user = @plant.user
+    redirect_to(plants_path) unless @user == current_user
   end
 end
