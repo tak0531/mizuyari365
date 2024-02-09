@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      plant:
+        title: 植物名
+        family: 科
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+      plants_actions:
+        last_watered: 最終水やり日
+        new_pot: 鉢替え日

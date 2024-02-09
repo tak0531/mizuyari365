@@ -15,14 +15,15 @@ class PlantsController < ApplicationController
 
   def create
     @plant = current_user.plants.build(plant_params)
-
-    if @plant.save
-        @plant.plants_actions.create(last_watered: params[:plant][:last_watered], user_id: current_user.id)
-        redirect_to plants_path
-      else
-        render :new
-      end
-
+    @plants_action = @plant.plants_actions.build(last_watered: params[:plant][:last_watered], user_id: current_user.id)
+  
+    if @plant.save && @plants_action.save
+      redirect_to plants_path
+      flash[:success] = "植物を登録しました"
+    else
+      flash.now[:danger] = "植物の登録に失敗しました"
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -44,8 +45,10 @@ class PlantsController < ApplicationController
 
     if @plant.destroy
         redirect_to plants_path
+        flash[:success] = "植物を削除しました"
     else
-        render :index, status: :see_other
+        render :index, status: :unprocessable_entity
+        flash.now[:danger] = "植物の削除に失敗しました"
     end
   end
 

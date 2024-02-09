@@ -16,8 +16,10 @@ class UsersController < ApplicationController
 
     if @user.save
       redirect_to login_path
+      flash[:success] = "アカウントを作成しました"
     else
-      render :new
+      flash.now[:danger] = "アカウントの作成に失敗しました"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,6 +30,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def search_index
+    user = User.find_by(id: params[:user_id])
+    @plants = user.plants.all
   end
 
   private
