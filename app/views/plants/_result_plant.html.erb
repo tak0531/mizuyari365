@@ -5,9 +5,10 @@
       <% else %>
         <%= image_tag( 'top.webp', class:'my-2 rounded-lg', size: '900x1600' ) %>
       <% end %>
+      <%= link_to user_plants_path(plant.user) do %>
+        <p>ユーザー名：<%= plant.user.name %></p>
+      <% end %>
       <p>植物名：<%= plant.name %></p>
-      <p>科名：<%= plant.family %></p>
-      <p>ユーザー名：<%= plant.user.name %></p>
     <% end %>
     <% if plant.user_id == current_user.id %>
       <div class="mt-2">

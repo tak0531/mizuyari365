@@ -6,3 +6,5 @@ module.exports = {
     './app/javascript/**/*.js'
   ]
 }
+
+
