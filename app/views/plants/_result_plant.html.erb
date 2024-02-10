@@ -1,3 +1,4 @@
+<% unless plant.user_id == current_user.id %>
 <div class="bg-white shadow-md rounded-lg overflow-hidden items-center p-2">
     <%= link_to plant_path(plant) do %>  
       <% if plant.image.attached? %>
@@ -9,6 +10,12 @@
         <p>ユーザー名：<%= plant.user.name %></p>
       <% end %>
       <p>植物名：<%= plant.name %></p>
+
+      <p>科名：<%= plant.family %></p>
+      <%= link_to user_plants_path(plant.user), class: 'text-blue-500' do %>
+        <p>ユーザー名：<%= plant.user.name %></p>
+      <% end %>
+
     <% end %>
     <% if plant.user_id == current_user.id %>
       <div class="mt-2">
@@ -18,3 +25,4 @@
       </div>
     <% end %>
 </div>
+<% end %>

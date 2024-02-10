@@ -12,8 +12,10 @@ Rails.application.routes.draw do
 
   
   resources :users do
-    get 'plants' => 'users#search_index'  
+
+    get 'plants' => 'users#search_index'
   end
+
 
   resources :plants do
     collection do

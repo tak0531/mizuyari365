@@ -1,15 +1,15 @@
-<div class="min-h-screen mx-auto bg-green-200 flex flex-col justify-center items-center">
-    <div class="mx-auto mb-6">
+<div class="min-h-screen bg-green-200 flex flex-col">
+    <div class="mx-auto justify-start mb-6">
         <div class="flex justify-end bg-green-200">
             <div class="mt-4 mb-4 text-gray-400 hover:text-gray-900 text-2xl flex justify-between bg-green-200">
-               
-
                 <%= link_to '植物を登録する', new_plant_path, class:'justify-items-end bg-green-500 ml-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
             </div>
         </div>
     </div>
-    <div class="flex bg-green-200 grid grid-col-1 gap-4 md:grid-cols-3 lg:grid-cols-3 row-span-5 mx-4 mb-12">
-        <%= render @plants %>
+    <div class="container mx-auto">
+      <div class="flex bg-green-200 grid grid-col-1 gap-4 md:grid-cols-3 lg:grid-cols-3 row-span-5 mx-4 mb-12">
+          <%= render @plants %>
+      </div>
     </div>
 </div>
 
