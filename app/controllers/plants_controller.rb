@@ -47,8 +47,10 @@ class PlantsController < ApplicationController
         redirect_to plants_path
         flash[:success] = "植物を削除しました"
     else
+
         flash[:danger] = "植物の削除に失敗しました"
         render :index, status: :unprocessable_entity
+
     end
   end
 

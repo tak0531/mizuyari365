@@ -18,8 +18,11 @@ class UsersController < ApplicationController
       redirect_to login_path
       flash[:success] = "アカウントを作成しました"
     else
+
       render :new, status: :unprocessable_entity
       flash.now[:danger] = "アカウントの作成に失敗しました"
+
+
     end
   end
 
@@ -34,6 +37,7 @@ class UsersController < ApplicationController
 
   def search_index
     user = User.find_by(id: params[:user_id])
+
     keyword = params[:name_cont]
     p keyword
     if keyword.present?
@@ -41,6 +45,7 @@ class UsersController < ApplicationController
     else
       @plants = user.plants.all
     end
+
   end
 
   private
