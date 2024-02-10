@@ -1,7 +1,12 @@
 <div class=" flex h-screen bg-green-200">
     <!-- 左側の縦長のカード -->
-    <div class="w-1/3 bg-white h-ful shadow-md rounded-lg overflow-hidde mr-2 mb-12 mt-2 ml-2">
+    <div class="w-1/3 bg-white h-ful shadow-md rounded-lg overflow-auto mr-2 mb-12 mt-2 ml-2">
       <p>水やり催促メッセージ表示</p>
+      <div class="bg-green shadow-md rounded-lg overflow-auto">
+      <% @w_cycle.each do |w_cycle| %>
+        <p><%= w_cycle %></p>
+      <% end %>
+      </div>
     </div>
   
     <!-- 右側のコンテナ -->
