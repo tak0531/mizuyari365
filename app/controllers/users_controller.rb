@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @plants = @user.plants
+    @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
   end
 
   def new

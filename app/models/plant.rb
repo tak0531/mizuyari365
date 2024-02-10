@@ -34,4 +34,20 @@ class Plant < ApplicationRecord
   def formatted_created_at
     created_at.strftime('%Y年%m月%d日')
   end
+
+  def watering_cycle(plant)
+    last_w_day = plant.plants_actions.last&.last_watered
+    result = []
+
+    if plant.family == "その他"
+      d7_watering = last_w_day + 7
+      result << d7_watering
+    else
+      d11_watering = last_w_day + 11
+      result << d11_watering
+    end
+
+    return result
+    
+  end
 end
