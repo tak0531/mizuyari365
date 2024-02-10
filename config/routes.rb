@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   
-  resources :users
+  resources :users do
+    get 'plants' => 'users#search_index'
+  end
   resources :plants do
     collection do
       get 'search', to: 'plants#search'

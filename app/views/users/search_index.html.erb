@@ -1,0 +1,12 @@
+<div class="min-h-screen bg-green-200 flex flex-col">
+    <div class="mb-4 mt-4 px-4 bg-green-200 justify-between">
+        <div>
+            <p><%= link_to '＜= 検索画面に戻る', search_plants_path, class: 'text-gray-600 hover:text-gray-900 text-xl' %></p>
+        </div>
+    </div>
+    <div class="container mx-auto mt-4">
+      <div class="flex bg-green-200 grid grid-col-1 gap-4 md:grid-cols-3 lg:grid-cols-3 row-span-5 mt-6 mx-4 mb-12">
+          <%= render @plants %>
+      </div>
+    </div>
+</div>
