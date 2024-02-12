@@ -1,8 +1,5 @@
 import "@hotwired/turbo-rails"
-import "./Script.js"
 
-
-console.log('いいねいいね')
 
 
 document.addEventListener("DOMContentLoaded", function() {

@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.header-fixed-tp{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+}
 
 .footerFixed{
     min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */

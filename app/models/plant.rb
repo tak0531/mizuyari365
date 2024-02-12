@@ -37,15 +37,34 @@ class Plant < ApplicationRecord
 
   def watering_cycle(plant)
     last_w_day = plant.plants_actions.last&.last_watered
-    result = []
+    result = [plant.name]
 
-    if plant.family == "その他"
-      d7_watering = last_w_day + 7
-      result << d7_watering
-    else
-      d11_watering = last_w_day + 11
-      result << d11_watering
-    end
+      if plant.family == "その他"
+
+        d7_watering = last_w_day + 7.days
+        water_remaining7 = (d7_watering - Date.today).to_i
+
+        if water_remaining7 >= 4
+          result << 0
+        elsif water_remaining7 == 0
+          result << '今日'
+        else
+          result << "#{water_remaining7}日後"
+        end
+
+      else
+
+        d11_watering = last_w_day + 11.days
+        water_remaining11 = (d11_watering - Date.today).to_i
+        if water_remaining11 >= 4
+          result << 0
+        elsif water_remaining11 == 0
+          result << '今日'
+        else
+          result << "#{water_remaining11}日後"
+        end
+
+      end
 
     return result
     

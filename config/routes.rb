@@ -21,5 +21,8 @@ Rails.application.routes.draw do
     collection do
       get 'search', to: 'plants#search'
     end
+    member do
+      patch 'watered', to: 'plants#watered'
+    end
   end
 end
