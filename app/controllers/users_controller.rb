@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @plants = @user.plants
+    @plants = @user.plants.to_a
     @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
   end
 
@@ -39,15 +39,7 @@ class UsersController < ApplicationController
 
   def search_index
     user = User.find_by(id: params[:user_id])
-
-    keyword = params[:name_cont]
-    p keyword
-    if keyword.present?
-      @plants = user.plants.where("name LIKE ?", "%#{keyword}%")
-    else
-      @plants = user.plants.all
-    end
-
+    @plants = user.plants.all
   end
 
   private

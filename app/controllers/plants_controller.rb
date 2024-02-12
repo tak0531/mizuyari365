@@ -59,6 +59,20 @@ class PlantsController < ApplicationController
     @plants = @q.result(distinct: true).includes(:user).order(created_at: :desc)
   end
 
+  def watered
+    @plant = Plant.find(params[:id])
+    @plants_action = @plant.plants_actions.last
+
+    if @plants_action.update(last_watered: Date.today)
+      flash[:success] = "水やりが完了しました"
+    else
+      flash[:error] = "水やりの更新に失敗しました"
+    end
+
+    redirect_to plants_path
+
+  end
+
   private
 
   def plant_params
