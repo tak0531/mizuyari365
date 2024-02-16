@@ -27,7 +27,11 @@
           <p>：<%= @user.email %></p>
           アカウント登録日
           <p>：<%= @user.formatted_created_at %></p>
-          <p>：<%= link_to 'LINEと連携し通知を受け取る', '#', class:'text-gray-400 hover:text-gray-900 hover:underline bg-green-200 border- border-gray-300 border-dashed' %></p>
+          <% unless @user.line_id.present? %>
+            <P><%= link_to 'QRコードで友達追加しラインと連携', 'https://lin.ee/xUd7xfR' %></P>
+          <% else %>
+            <P><%= link_to 'LINEの連携解除', user_delete_line_id_path(current_user), data: {turbo_method: :patch, turbo_confirm: "LINEで通知を受け取れなくなりますが、よろしいですか？"} %></P>
+          <% end %>
         </div>
         <div class="w-2/3 flex">
           <div class="bg-white shadow-md rounded-lg overflow-hidden w-80 h-full mr-2 flex-none">
