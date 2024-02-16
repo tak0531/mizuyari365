@@ -48,6 +48,9 @@ class Plant < ApplicationRecord
           result << 0
         elsif water_remaining7 == 0
           result << '今日'
+        elsif water_remaining7 < 0
+          abs_remaining_days7 = water_remaining7.abs
+          result << "#{abs_remaining_days7}日前"
         else
           result << "#{water_remaining7}日後"
         end
@@ -60,6 +63,9 @@ class Plant < ApplicationRecord
           result << 0
         elsif water_remaining11 == 0
           result << '今日'
+        elsif water_remaining11 < 0
+          abs_remaining_days11 = water_remaining11.abs
+          result << "#{abs_remaining_days11}日前"
         else
           result << "#{water_remaining11}日後"
         end

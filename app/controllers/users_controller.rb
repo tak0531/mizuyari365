@@ -48,29 +48,46 @@ class UsersController < ApplicationController
   # LINEmessagingapi
   def callback
     body = request.body.read
+
+   
+    
     events = client.parse_events_from(body)
     events.each do |event|
-      case event
         
-      # ユーザーが講師kラインを友達追加した際にメッセージを送る処理
-      when Line::Bot::Event::Follow
+      # ユーザーが公式ラインを友達追加した際にメッセージを送る処理
+      if event['type'] == 'follow'
         line_user_id = event['source']['userId']
         client.push_message(line_user_id, { type: 'text', text: '友達追加ありがとうございます。' })
         client.push_message(line_user_id, { type: 'text', text: '水やりKeeperに登録しているメールアドレスをメッセージで送るとLINE通知機能がオンになります。' })
       
       # Usersのline_idを登録する処理 
-      when Line::Bot::Event::Message
-        user_email = event['message']['text']
-        # user_email.match(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/) で取得でもいいかも
+      elsif event['type'] == 'message'
+        event_text = event['message']['text']
         user_line_id = event['source']['userId']
-          if @user = User.find_by(email: user_email)
-            @user.line_id = user_line_id
-            @user.save
-            client.push_message(user_line_id, { type: 'text', text: "#{@user.name}さんのLINEが登録されました。" })
-            redirect_to root_path
+        if event_text.match(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/)
+            if @user = User.find_by(email: event_text)
+              @user.line_id = user_line_id
+              @user.save
+              client.push_message(user_line_id, { type: 'text', text: "#{@user.name}さんのLINEが登録されました。" })
+              redirect_to root_path
+            else
+              client.push_message(user_line_id, { type: 'text', text: "メールアドレスが存在しませんでした。" })
+            end
+        elsif !(event_text =~ /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/)
+          @user = User.find_by(line_id: user_line_id)
+          @plants = @user.plants.to_a
+          @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
+
+          if event['message']['text'].include?('水やり')
+            @w_cycle.each do |key, value|
+              unless value == 0
+              client.push_message(user_line_id, { type: 'text', text: "#{key}は#{value}が水やり日だよ。" })
+              end
+            end
           else
-            client.push_message(user_line_id, { type: 'text', text: "メールアドレスが存在しませんでした。" })
+            client.push_message(user_line_id, { type: 'text', text: "水やりのタイミングが知りたい場合は、'水やり'と送ってください。" })
           end
+        end
       end
     end
   end
