@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :plants
   has_many :likes
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 
   has_one_attached :avatar
 

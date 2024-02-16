@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -10,10 +11,15 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
+
+
+  
   
   resources :users do
+    get 'plants', to: 'users#search_index'
 
-    get 'plants' => 'users#search_index'
+    post 'callback', to: 'users#callback'
+    patch 'delete_line_id', to: 'users#delete_line_id'
   end
 
 
