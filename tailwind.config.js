@@ -8,3 +8,13 @@ module.exports = {
 }
 
 
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        // 'カラー名': 'カラーコード'
+        'dark-green': '#b0cfcf',
+      },
+    },
+  },
+}

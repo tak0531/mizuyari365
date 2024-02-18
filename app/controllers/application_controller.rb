@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :require_login
+  before_action :search
+
+  def search
+    @q = Plant.ransack(params[:q])
+    @plants = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+  end
 
   private
 
@@ -7,7 +13,4 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
 end

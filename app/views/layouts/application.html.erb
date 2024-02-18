@@ -8,9 +8,11 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   </head>
 
-  <body class="flex flex-col">
+  <body class="flex flex-col overflow-auto">
     <div class="footerFixed">
       <% if logged_in? %>
         <%= render 'shared/header' %>
