@@ -54,11 +54,6 @@ class PlantsController < ApplicationController
     end
   end
 
-  def search
-    @q = Plant.ransack(params[:q])
-    @plants = @q.result(distinct: true).includes(:user).order(created_at: :desc)
-  end
-
   def watered
     @plant = Plant.find(params[:id])
     @plants_action = @plant.plants_actions.last

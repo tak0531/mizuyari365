@@ -1,15 +1,23 @@
 <header class="header text-gray-600 body-font  bg-green-200">
-  <div class="bg-green-200 py-4 px-6 flex justify-between items-center ">
-    <%= link_to root_path, class: 'hover:text-gray-900' do %>  
-      <h1 class="text-gray text-xl font-semibold">水やり Keeper</h1>
+  <div class="bg-green-200 py-4 px-6 flex justify-between items-center">
+    <%= link_to root_path, class: 'hover:text-gray-900' do %>
+      <%= image_tag 'Keeper-removebg.png', size: '60x60' %>
+      <!-- <h1 class="text-gray text-xl font-semibold">水やり Keeper</h1> -->
     <% end %>
     <div class="flex space-x-4 items-center">
       <div class="mr-2">
       </div>
-      <%= link_to '他のユーザーの植物', search_plants_path, class: 'text-gray hover:text-gray-900' %>
-      <%= link_to 'My植物ページ', plants_path, class: 'text-gray hover:text-gray-900' %>
-      <%= link_to 'Myページ', user_path(current_user.id), class: 'text-gray hover:text-gray-900' %> 
-      <%= link_to 'ログアウト', logout_path, method: :delete, data: { turbo_method: :delete }, class: 'text-gray hover:text-gray-900' %>
+      <%= render 'shared/search', q: @q, url: search_plants_path %>
+      <%= link_to plants_path, class: 'text-gray hover:text-gray-900', title: 'My植物ページ' do %>
+        <i class="fas fa-seedling"></i>
+      <% end %>
+      <%= link_to user_path(current_user.id), class: 'text-gray hover:text-gray-900', title: 'Myページ' do %>
+        <i class="fas fa-user"></i>
+      <% end %>
+
+      <%= link_to logout_path, method: :delete, data: { turbo_method: :delete }, class: 'text-gray hover:text-gray-900', title: 'ログアウト' do %>
+        <i class="fas fa-sign-out-alt"></i> 
+      <% end %>
     </div>
   </div>
 </header>

@@ -49,8 +49,6 @@ class UsersController < ApplicationController
   def callback
     body = request.body.read
 
-   
-    
     events = client.parse_events_from(body)
     events.each do |event|
         

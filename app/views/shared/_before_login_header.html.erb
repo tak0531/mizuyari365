@@ -1,11 +1,14 @@
 <header class="text-gray-600 body-font bg-green-200">
     <div class="bg-green-200 py-4 px-6 flex justify-between items-center">
-      <%= link_to root_path, class:'hover:text-gray-900' do %>  
-        <h1 class="text-gray text-xl font-semibold">水やり Keeper</h1>
+      <%= link_to root_path, class: 'hover:text-gray-900' do %>
+        <%= image_tag 'Keeper-removebg.png', size: '60x60' %>
+        <!-- <h1 class="text-gray text-xl font-semibold">水やり Keeper</h1> -->
       <% end %>
         <div class="space-x-4">
           <%= link_to '新規登録', new_user_path, class:'text-gray hover:text-gray-900' %>
-          <%= link_to 'ログイン', login_path, class:'text-gray hover:text-gray-900' %>
+          <%= link_to login_path, class: 'text-gray hover:text-gray-900', title: 'ログイン' do %>
+            <i class="fas fa-sign-in-alt"></i>
+          <% end %>
         </div>
       </div>
 </header>
