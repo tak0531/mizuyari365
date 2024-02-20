@@ -7,8 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @plants = @user.plants.to_a
+    @plants = @user.plants.order(created_at: :desc)
     @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
+
+    @plant_limit2 = @user.plants.order(created_at: :desc).limit(2)
   end
 
   def new

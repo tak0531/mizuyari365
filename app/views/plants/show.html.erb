@@ -8,16 +8,16 @@
           <!-- 植物の画像 -->
             <div class="w-full p-2">
                 <% if @plant.image.attached? %>
-                    <%= image_tag(@plant.image, class:'object-cover mx-auto', width: '50%', height: '30%') %>
+                    <%= image_tag(@plant.image.variant(resize_to_limit: [1600, 900]), class:'object-cover mx-auto') %>
                 <% else %>
-                    <%= image_tag('top.webp', class:'object-cover max-w-64 max-h-64 mx-auto h-64') %>
+                    <%= image_tag('Keeper2.jpg', class:'object-cover mx-auto', size: '900x1600') %>
                 <% end %>
             </div>
 
             <div class="border p-2">
                 <div class="flex justify-between items-center">
                     <div class="mr-4">
-                        水やり推奨日：<%= @plant.plants_actions.last&.last_watered %>
+                        水やり推奨日：<%= @water_day %>
                     </div>
                     <div class="p-2">
                         <p class="text-gray-600">いいね(本リリース)</p>

@@ -28,24 +28,15 @@
           アカウント登録日
           <p>：<%= @user.formatted_created_at %></p>
           <% unless @user.line_id.present? %>
-            <P><%= link_to 'QRコードで友達追加しラインと連携', 'https://lin.ee/xUd7xfR' %></P>
+            <%= link_to  'https://lin.ee/xUd7xfR' do %>
+              <%= image_tag "https://scdn.line-apps.com/n/line_add_friends/btn/ja.png", size: '125x125', class: 'mt-2' %>
+            <% end %>  
           <% else %>
-            <P><%= link_to 'LINEの連携解除', user_delete_line_id_path(current_user), data: {turbo_method: :patch, turbo_confirm: "LINEで通知を受け取れなくなりますが、よろしいですか？"} %></P>
+            <P><%= link_to 'LINEの連携解除', user_delete_line_id_path(current_user), data: {turbo_method: :patch, turbo_confirm: "LINEで通知を受け取れなくなりますが、よろしいですか？"}, class: 'text-gray hover:underline' %></P>
           <% end %>
         </div>
         <div class="w-2/3 flex">
-          <div class="bg-white shadow-md rounded-lg overflow-hidden w-80 h-full mr-2 flex-none">
-            <div class="p-4">
-              <h2 class="text-2xl mt-6 font-semibold mb-2">最近登録した植物1番目</h2>
-              <p class="text-gray-600">内容</p>
-            </div>
-          </div>
-          <div class="bg-white shadow-md rounded-lg overflow-hidden w-80 h-full mr-2 flex-none">
-            <div class="p-4">
-              <h2 class="text-2xl mt-6 font-semibold mb-2">最近登録した植物2番目</h2>
-              <p class="text-gray-600">内容</p>
-            </div>
-          </div>
+            <%= render partial: 'users/plant', collection: @plant_limit2, as: 'plant' %>
         </div>
       </div>
       
@@ -55,3 +46,5 @@
       </div>
     </div>
 </div>
+
+
