@@ -7,6 +7,13 @@ class PlantsController < ApplicationController
 
   def show
     @plant = Plant.find(params[:id])
+    last_w_day = @plant.plants_actions.last&.last_watered
+
+    if @plant.family == 'その他'
+      @water_day = d7_watering = last_w_day + 7.days
+    else
+      @water_day = d11_watering = last_w_day + 11.days
+    end
   end
 
   def new

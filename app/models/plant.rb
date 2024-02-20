@@ -35,6 +35,7 @@ class Plant < ApplicationRecord
     created_at.strftime('%Y年%m月%d日')
   end
 
+
   def watering_cycle(plant)
     last_w_day = plant.plants_actions.last&.last_watered
     result = [plant.name]
