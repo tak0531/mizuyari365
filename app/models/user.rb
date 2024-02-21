@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true, length: { maximum: 255 }
 
+  validates :avatar, content_type: ['image/png', 'image/jpeg', 'image/gif']
+
   def image_content_type
     if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/gif])
       errors.add(:image, '：ファイル形式が、JPEG, PNG, GIF以外になってます。ファイル形式をご確認ください。')
