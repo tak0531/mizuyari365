@@ -6,15 +6,3 @@ module.exports = {
     './app/javascript/**/*.js'
   ]
 }
-
-
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        // 'カラー名': 'カラーコード'
-        'dark-green': '#b0cfcf',
-      },
-    },
-  },
-}
