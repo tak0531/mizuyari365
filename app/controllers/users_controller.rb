@@ -108,8 +108,8 @@ class UsersController < ApplicationController
 
   def client
     @client ||= Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+      config.channel_secret = '45b6d8345a10b0c85f6173151fbce8d1'
+      config.channel_token = 'YatcmQP8Xz+DuPhtr67XD7nb1MRAAX8uHCNo0tsARHKq74z9/QgfFdLqZToKtGEE57Ew8rp1ShFEkyOBK8p8TaqBDl5yi2482iKlpBkhAK/GN0V2g772HoB8x7sB+6mGciKkXbZlu4ieoaQYs286vQdB04t89/1O/w1cDnyilFU='
     }
   end
 
