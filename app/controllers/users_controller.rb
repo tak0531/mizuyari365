@@ -78,7 +78,7 @@ class UsersController < ApplicationController
           @plants = @user.plants.to_a
           @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
 
-          if event['message']['text'].include?('水やり', 'みずやり')
+          if event['message']['text'].include?('水やり')
             @w_cycle.each do |key, value|
               unless value == 0
               client.push_message(user_line_id, { type: 'text', text: "#{key}は#{value}が水やり日だよ。" })
