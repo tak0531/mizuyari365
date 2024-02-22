@@ -2,7 +2,7 @@
 <div class="bg-white shadow-md rounded-lg overflow-hidden items-center p-2">
     <%= link_to plant_path(plant) do %>  
       <% if plant.image.attached? %>
-        <%= image_tag( plant.image.variant(resize_to_fill: [400, 400]), class: 'my-2 rounded-lg') %>
+        <%= image_tag( plant.image.variant(resize_to_fill: [400, 400]).processed, class: 'my-2 rounded-lg') %>
       <% else %>
         <%= image_tag( 'Keeper2.jpg', class:'my-2 rounded-lg', :size => '400x400' ) %>
       <% end %>
