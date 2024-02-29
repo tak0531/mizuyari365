@@ -7,6 +7,7 @@ class PlantsController < ApplicationController
 
   def show
     @plant = Plant.find(params[:id])
+    @user = @plant.user
     last_w_day = @plant.plants_actions.last&.last_watered
 
     if @plant.family == 'その他'
