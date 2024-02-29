@@ -20,7 +20,13 @@
                         水やり推奨日：<%= @water_day %>
                     </div>
                     <div class="p-2">
-                        <p class="text-gray-600">いいね(本リリース)</p>
+                        <p class="text-gray-600">
+                          <% if current_user.like?(@plant) %>
+                            <%= render 'unlike', { plant: @plant } %>
+                          <% else %>
+                            <%= render 'like', { plant: @plant } %>
+                          <% end %>
+                        </p>
                     </div>
                 </div>
             </div>

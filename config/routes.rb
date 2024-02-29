@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
 
   resources :plants do
+    resource :likes, only: %i[create destroy]
     collection do
       get 'search', to: 'plants#search'
     end

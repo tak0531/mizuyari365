@@ -1,0 +1,3 @@
+<%= link_to plant_likes_path(plant_id: plant.id), id: "unlike-button-for-plant-#{plant.id}", data: { turbo_method: :delete }, remote: true do %>
+  <i class="fas fa-heart"><%= plant.likes.count %></i>
+<% end %>
