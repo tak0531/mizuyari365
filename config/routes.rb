@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/edit'
+  get 'comments/destroy'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
 
   resources :plants do
     resource :likes, only: %i[create destroy]
+    resources :comments, only: %i[create destroy], shallow: true
     collection do
       get 'search', to: 'plants#search'
     end

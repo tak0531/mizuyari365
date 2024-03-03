@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :plants
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :like_plants, through: :likes, source: :plant
 
   has_one_attached :avatar
@@ -13,6 +14,10 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true, length: { maximum: 255 }
+
+  def own?(object)
+    id == object&.user_id
+  end
 
   def like(plant)
     like_plants << plant

@@ -8,6 +8,8 @@ class PlantsController < ApplicationController
   def show
     @plant = Plant.find(params[:id])
     @user = @plant.user
+    @comment = Comment.new
+    @comments = @plant.comments.includes(:user).order(created_at: :desc)
     last_w_day = @plant.plants_actions.last&.last_watered
 
     if @plant.family == 'その他'

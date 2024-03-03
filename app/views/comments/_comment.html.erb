@@ -1,0 +1,17 @@
+<div class="border-b">
+    <tr id="comment-<%= comment.id %>">
+      <td>
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-medium mr-2"><%= comment.user.name %>:</h3>
+            <p class="text-sm text-gray-700"><%= comment.content %></p>
+          <% if current_user.own?(comment) %>
+            <div>
+              <%= link_to comment_path(comment), data: { turbo_method: :delete }, class: "text-red-700 hover:text-red-900 delete-comment-link" do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  </div>

@@ -1,0 +1,6 @@
+<%= form_with model: comment, url: plant_comments_path(plant) do |f| %>
+  <div class="mb-3">
+    <%= f.text_area :content, class: "border border-gray-300 form-textarea mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50", rows: "2" %>
+  </div>
+  <%= f.submit '登録', class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray bg-blue-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+<% end %>
