@@ -36,11 +36,15 @@
           <!-- 植物の詳細情報 -->
         <div class="flex bg-green-200 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-2 row-span-5 mx-4 mb-12">
             <div class="bg-white shadow-md rounded-lg overflow-hidden overflow-scroll items-center p-2">
-                <h2 class="text-xl mb-2 overflow-scroll overflow-hidden">メモ：<%= @plant.content %></h2>
+                <h2 class="text-xl mb-2 overflow-scroll">メモ：<%= @plant.content %></h2>
             </div>
 
-            <div class="bg-white shadow-md rounded-lg overflow-visible items-center p-2">
-                <p class="text-gray-600">コメント(本リリース)</p>
+            <div class="bg-white shadow-md rounded-lg overflow-auto items-center p-2">
+                <h2 class="text-xl">コメント：</h2>
+                <%= render 'comments/form', comment: @comment, plant: @plant %>
+                <div class="border-b overflow-auto">
+                <%= render @comments, plant: @plant %>
+                </div>
             </div>
         </div>
         <% if @plant.user_id == current_user.id %>
