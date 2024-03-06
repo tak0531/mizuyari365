@@ -1,8 +1,5 @@
 class PlantsAction < ApplicationRecord
-    belongs_to :plant
+  belongs_to :plant
 
-
-    validates :last_watered, presence: true
-
-
+  validates :last_watered, presence: true
 end
