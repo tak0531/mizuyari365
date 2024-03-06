@@ -1,6 +1,6 @@
 class PlantsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
-    
+
   def index
     @plants = current_user.plants.all.order(created_at: :desc)
   end
@@ -12,21 +12,25 @@ class PlantsController < ApplicationController
     @comments = @plant.comments.includes(:user).order(created_at: :desc)
     last_w_day = @plant.plants_actions.last&.last_watered
 
-    if @plant.family == 'その他'
-      @water_day = d7_watering = last_w_day + 7.days
-    else
-      @water_day = d11_watering = last_w_day + 11.days
-    end
+    @water_day = if @plant.family == 'その他'
+                   d7_watering = last_w_day + 7.days
+                 else
+                   d11_watering = last_w_day + 11.days
+                 end
   end
 
   def new
-    @plant =Plant.new
+    @plant = Plant.new
+  end
+
+  def edit
+    @plant = Plant.find(params[:id])
   end
 
   def create
     @plant = current_user.plants.build(plant_params)
     @plants_action = @plant.plants_actions.build(last_watered: params[:plant][:last_watered], user_id: current_user.id)
-  
+
     if @plant.save && @plants_action.save
       redirect_to plants_path
       flash[:success] = "植物を登録しました"
@@ -36,13 +40,9 @@ class PlantsController < ApplicationController
     end
   end
 
-  def edit
-    @plant = Plant.find(params[:id])
-  end
-
   def update
     @plant = Plant.find(params[:id])
-  
+
     if @plant.update(plant_params)
       redirect_to plant_path
     else
@@ -54,12 +54,12 @@ class PlantsController < ApplicationController
     @plant = Plant.find(params[:id])
 
     if @plant.destroy
-        redirect_to plants_path
-        flash[:success] = "植物を削除しました"
+      redirect_to plants_path
+      flash[:success] = "植物を削除しました"
     else
 
-        flash[:danger] = "植物の削除に失敗しました"
-        render :index, status: :unprocessable_entity
+      flash[:danger] = "植物の削除に失敗しました"
+      render :index, status: :unprocessable_entity
 
     end
   end
@@ -75,7 +75,6 @@ class PlantsController < ApplicationController
     end
 
     redirect_to plants_path
-
   end
 
   private

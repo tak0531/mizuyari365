@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
   before_action :require_login
+  def edit
+    @comment = Comment.new
+  end
+
   def create
     comment = current_user.comments.build(comment_params)
 
@@ -10,11 +14,6 @@ class CommentsController < ApplicationController
       redirect_to plant_path(comment.plant)
       flash[:danger] = 'コメントの作成に失敗しました'
     end
-
-  end
-
-  def edit
-    @comment = Comment.new
   end
 
   def update
@@ -30,12 +29,11 @@ class CommentsController < ApplicationController
   def destroy
     comment = current_user.comments.find(params[:id])
     plant = Plant.find_by(id: comment.plant_id)
-    p comment
     if comment.user_id == current_user.id
       comment.destroy
       flash[:success] = 'コメントを削除しました'
-      redirect_to plant_path(plant), status: :see_other
     end
+    redirect_to plant_path(plant), status: :see_other
   end
 
   private

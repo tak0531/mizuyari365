@@ -4,8 +4,10 @@
       <div class="p-4 h-full bg-gray-200  shadow-md rounded-lg overflow-auto"> 
         <h2 class="border mb-2 text-2xl font-bold">通知</h2>
         <% @w_cycle.each do |key, value| %>
-          <% unless value == 0 %>
-          <div class="mb-3"><%= key %>は<%= value %>が水やり日です。</div>
+          <% if value == "3回以上水やりを忘れています。" %>
+            <div class="mb-3">'<%= key %>'は<%= value %></div>
+          <% elsif value != 0 %>
+            <div class="mb-3">'<%= key %>'は<%= value %>が水やり日です。</div>
           <% end %>
         <% end %>
      </div> 

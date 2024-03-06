@@ -14,17 +14,12 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-
-
-  
-  
   resources :users do
     get 'plants', to: 'users#search_index'
 
     post 'callback', to: 'users#callback'
     patch 'delete_line_id', to: 'users#delete_line_id'
   end
-
 
   resources :plants do
     resource :likes, only: %i[create destroy]
