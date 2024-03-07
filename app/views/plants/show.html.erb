@@ -42,7 +42,7 @@
             <div class="bg-white shadow-md rounded-lg overflow-auto items-center p-2">
                 <h2 class="text-xl">コメント：</h2>
                 <%= render 'comments/form', comment: @comment, plant: @plant %>
-                <div class="border-b overflow-auto">
+                <div class="overflow-auto">
                 <%= render @comments, plant: @plant %>
                 </div>
             </div>
