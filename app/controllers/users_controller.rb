@@ -6,6 +6,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to root_path, alert: "他のユーザーのプロフィールにはアクセスできません。"
+      return
+    end
     @plants = @user.plants.order(created_at: :desc)
     @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
 
@@ -22,7 +26,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to login_path
+      login(user_params[:email], user_params[:password])
+      redirect_to root_path
       flash[:success] = "アカウントを作成しました"
     else
 
