@@ -36,7 +36,7 @@
           <!-- 植物の詳細情報 -->
         <div class="flex bg-green-200 grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-2 row-span-5 mx-4 mb-12">
             <div class="bg-white shadow-md rounded-lg overflow-hidden overflow-scroll items-center p-2">
-                <h2 class="text-xl mb-2 overflow-scroll">メモ：<%= @plant.content %></h2>
+                <h2 class="text-xl mb-2 overflow-scroll">日記：<%= @plant.content %></h2>
             </div>
 
             <div class="bg-white shadow-md rounded-lg overflow-auto items-center p-2">
@@ -49,7 +49,7 @@
         </div>
         <% if @plant.user_id == current_user.id %>
         <div class="mb-6 flex justify-end">
-            <%= link_to '編集', edit_plant_path(@plant), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2' %>
+            <%= link_to '編集', edit_plant_path(@plant), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2', data: {"turbo" => false} %>
             <%= link_to '削除', plant_path(@plant), method: :delete, data: { turbo_method: :delete }, class:'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
         </div>
         <% end %>

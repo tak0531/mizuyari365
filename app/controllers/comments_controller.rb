@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
       redirect_to plant_path(comment.plant)
       flash[:success] = 'コメントを作成しました'
     else
-      redirect_to plant_path(comment.plant)
       flash[:danger] = 'コメントの作成に失敗しました'
     end
+    redirect_to plant_path(comment.plant)
   end
 
   def update

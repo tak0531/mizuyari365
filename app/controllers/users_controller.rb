@@ -71,7 +71,7 @@ class UsersController < ApplicationController
           else
             client.push_message(user_line_id, { type: 'text', text: "メールアドレスが存在しませんでした。" })
           end
-        elsif !(event_text =~ /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/)
+        elsif event_text =~ /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/
           @user = User.find_by(line_id: user_line_id)
           @plants = @user.plants.to_a
           @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
@@ -91,7 +91,7 @@ class UsersController < ApplicationController
       end
     end
   end
-  # https://mizuyari-keeper-71a0af7a91ef.herokuapp.com/users/user_id/callback
+
   def delete_line_id
     @user = User.find(current_user.id)
     @user.line_id = nil

@@ -1,26 +1,47 @@
-console.log('こんにちは')
+console.log('良い')
 
-document.addEventListener("DOMContentLoaded", function() {
-  const input = document.getElementById("image-input");
-  const preview = document.getElementById("image-preview");
-
-  // フォームが読み込まれたときに画像が設定されている場合、プレビューを表示
-  if (preview && preview.src !== "") {
-    preview.classList.remove("hidden");
-  }
-
-  input.addEventListener("change", function() {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(event) {
-        preview.src = event.target.result;
-        preview.classList.remove("hidden");
+document.addEventListener("DOMContentLoaded", () => {
+  const createImagePreview = (file) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const imgElement = document.createElement("img");
+      imgElement.src = event.target.result;
+      imgElement.classList.add("preview-image");
+      const previewContainer = document.getElementById("new-image");
+      if (previewContainer) {
+        previewContainer.innerHTML = "";
+        previewContainer.appendChild(imgElement);
+      } else {
+        console.error("Preview container not found.");
       }
-      reader.readAsDataURL(file);
-    } else {
-      preview.src = "";
-      preview.classList.add("hidden");
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const fileInput = document.getElementById("plant_image");
+  if (fileInput) {
+    fileInput.addEventListener("change", (event) => {
+      const selectedFile = event.target.files[0];
+      if (selectedFile) {
+        createImagePreview(selectedFile);
+      }
+    });
+
+    // Check if an image already exists
+    const existingImage = document.getElementById("existing_image");
+    if (existingImage && existingImage.src) {
+      const imgElement = document.createElement("img");
+      imgElement.src = existingImage.src;
+      imgElement.classList.add("preview-image");
+      const previewContainer = document.getElementById("new-image");
+      if (previewContainer) {
+        previewContainer.innerHTML = "";
+        previewContainer.appendChild(imgElement);
+      } else {
+        console.error("Preview container not found.");
+      }
     }
-  });
+  } else {
+    console.error("Element with id 'plant_image' not found.");
+  }
 });

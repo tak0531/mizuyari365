@@ -20,7 +20,7 @@
           </div>
           <div class="mb-4">
             <%= form.label :content, class: 'block text-gray-700 text-sm font-bold mb-2' do %>
-              メモ
+              日記
             <% end %>
             <%= form.text_area :content, placeholder: '例：少し育った', class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
         </div>
@@ -36,11 +36,9 @@
             <%= form.label :image, class: 'block text-gray-700 text-sm font-bold mb-2' do %>
               植物の写真
             <% end %>
-            <%= form.file_field :image, id: 'image-input', class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+            <%= form.file_field :image, id: 'plant_image', class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
           </div>
-          <div class="mb-6">
-            <%= image_tag "", id: "image-preview", class: "hidden w-300 h-200" %>
-          </div>
+          <div class="mb-6" id="new-image"></div>          
           <div class="flex items-center justify-between">
             <%= form.submit "登録", class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
           </div>
@@ -48,30 +46,3 @@
       </div>
     </div> 
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const input = document.getElementById("image-input");
-    const preview = document.getElementById("image-preview");
-
-    // フォームが読み込まれたときに画像が設定されている場合、プレビューを表示
-    if (preview && preview.src !== "") {
-      preview.classList.remove("hidden");
-    }
-
-    input.addEventListener("change", function() {
-      const file = this.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-          preview.src = event.target.result;
-          preview.classList.remove("hidden");
-        }
-        reader.readAsDataURL(file);
-      } else {
-        preview.src = "";
-        preview.classList.add("hidden");
-      }
-    });
-  });
-</script>
