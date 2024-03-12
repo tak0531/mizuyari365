@@ -25,7 +25,7 @@ class Plant < ApplicationRecord
   end
 
   def image_size
-    errors.add(:image, '：1MB以下のファイルをアップロードしてください。') if image.attached? && image.blob.byte_size > 1.megabytes
+    errors.add(:image, '：5MB以下のファイルをアップロードしてください。') if image.attached? && image.blob.byte_size > 5.megabytes
   end
 
   def formatted_created_at
