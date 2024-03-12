@@ -39,17 +39,16 @@ class Plant < ApplicationRecord
     if plant.family == "その他"
 
       d7_watering = last_w_day + 7.days
-      forget_3times = last_w_day + 21.days
-      water_remaining7 = (d7_watering - Date.today).to_i
-      forgot_watering = (forget_3times - Date.today).to_i
+      forget_3times_for7 = last_w_day + 21.days
+      water_remaining7 = (d7_watering - Time.zone.today).to_i
 
       if water_remaining7 >= 4
         result << 0
-      elsif water_remaining7 == 0
+      elsif water_remaining7.zero?
         result << '今日'
-      elsif Date.today >= forget_3times
+      elsif Time.zone.today >= forget_3times_for7
         result << "3回以上水やりを忘れています。"
-      elsif water_remaining7 < 0
+      elsif water_remaining7.negative?
         abs_remaining_days7 = water_remaining7.abs
         result << "#{abs_remaining_days7}日前"
       else
@@ -59,12 +58,15 @@ class Plant < ApplicationRecord
     else
 
       d11_watering = last_w_day + 11.days
-      water_remaining11 = (d11_watering - Date.today).to_i
+      forget_3times_for11 = last_w_day + 33.days
+      water_remaining11 = (d11_watering - Time.zone.today).to_i
       if water_remaining11 >= 4
         result << 0
-      elsif water_remaining11 == 0
+      elsif water_remaining11.zero?
         result << '今日'
-      elsif water_remaining11 < 0
+      elsif Time.zone.today >= forget_3times_for11
+        result << "3回以上水やりを忘れています。"
+      elsif water_remaining11.negative?
         abs_remaining_days11 = water_remaining11.abs
         result << "#{abs_remaining_days11}日前"
       else

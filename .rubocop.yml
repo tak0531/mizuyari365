@@ -94,3 +94,9 @@ Lint/UnusedMethodArgument:
 Style/SingleArgumentDig:
   Exclude:
     - 'config/initializers/cloudinary.rb'
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
