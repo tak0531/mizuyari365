@@ -39,7 +39,16 @@ class UsersController < ApplicationController
 
   def update; end
 
-  def destroy; end
+  def destroy
+    @user = User.find(params[:id])
+
+    if @user.id == current_user.id
+      @user.destroy
+      flash[:success] = 'アカウントを削除しました'
+    end
+    
+    redirect_to root_path
+  end
 
   def search_index
     user = User.find_by(id: params[:user_id])
