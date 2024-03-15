@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative" data-turbo="false">
     <%= image_tag 'top.webp', class: 'w-full h-auto object-cover blur-top-bottom opacity-0', id:'fadeInImage' %>
    <div class="absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center items-center text-center text-gray-600"></div>
    <div class="container mx-auto mt-44">
@@ -24,22 +24,3 @@
     </div>
    </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-  function fadeInImage() {
-    const image = document.getElementById("fadeInImage");
-    if (image) { // 要素が見つかった場合のみ実行
-      let opacity = 0;
-      const intervalId = setInterval(function() {
-        opacity += 0.01;
-        image.style.opacity = opacity;
-        if (opacity >= 1) {
-          clearInterval(intervalId);
-        }
-      }, 20);
-    }
-  }
-  fadeInImage();
-});
-</script>

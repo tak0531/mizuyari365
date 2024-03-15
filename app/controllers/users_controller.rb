@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
 
     @plant_limit2 = @user.plants.order(created_at: :desc).limit(2)
+
+    @items = RakutenWebService::Ichiba::Item.search(:keyword => '植物 自動給水機')
   end
 
   def new
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login(user_params[:email], user_params[:password])
-      redirect_to root_path
+      redirect_to user_path(@user)
       flash[:success] = "アカウントを作成しました"
     else
 
@@ -47,7 +49,7 @@ class UsersController < ApplicationController
       flash[:success] = 'アカウントを削除しました'
     end
     
-    redirect_to root_path
+    redirect_to login_path
   end
 
   def search_index
@@ -107,6 +109,10 @@ class UsersController < ApplicationController
     @user.save
     flash[:success] = 'LINEの連携を解除しました。'
     redirect_to root_path
+  end
+
+  def search_rakuten
+    @items = RakutenWebService::Ichiba::Item.search(:keyword => '植物 自動給水機')
   end
 
   private
