@@ -16,10 +16,11 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'plants', to: 'users#search_index'
-
     post 'callback', to: 'users#callback'
     patch 'delete_line_id', to: 'users#delete_line_id'
   end
+  get 'search_rakuten', to: 'users#search_rakuten'
+
 
   resources :plants do
     resource :likes, only: %i[create destroy]

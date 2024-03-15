@@ -45,7 +45,16 @@
       
       <!-- 下半分の横長のカード -->
       <div class="h-1/2 bg-white shadow-md rounded-lg overflow-hidden mt-2 mr-2">
-        <p>楽天市場api使用しておすすめ商品を表示(本リリース)</p>
+        <h1>製品名を入力して検索</h1>
+          <div class="search-box">
+            <% @items.each do |item| %>
+            <div class="list-group">
+             <%= image_tag (item['smallImageUrls'][0]) %>
+             <%= link_to item.name, "#{item.url}" %>
+             <%= number_with_delimiter(item.price) %>円
+            </div>
+          <% end %>
+          </div>
       </div>
     </div>
 </div>
