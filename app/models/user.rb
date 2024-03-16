@@ -42,4 +42,8 @@ class User < ApplicationRecord
   def formatted_created_at
     created_at.strftime('%Y年%m月%d日')
   end
+
+  def forget_3times()
+
+  end
 end
