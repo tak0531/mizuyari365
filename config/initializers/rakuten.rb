@@ -1,6 +1,6 @@
 RakutenWebService.configure do |c|
     # (必須) アプリケーションのアプリケーションID。
-    c.application_id = 'YOUR_APPLICATION_ID'
+    c.application_id = ENV['RWS_APPLICATION_ID']
 
     # オプション）楽天アカウントのアフィリエイトID。
     c.affiliate_id = 'YOUR_AFFILIATE_ID' # default: nil
