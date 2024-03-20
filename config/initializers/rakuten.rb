@@ -3,7 +3,7 @@ RakutenWebService.configure do |c|
     c.application_id = ENV['RWS_APPLICATION_ID']
 
     # オプション）楽天アカウントのアフィリエイトID。
-    c.affiliate_id = 'YOUR_AFFILIATE_ID' # default: nil
+    c.affiliate_id = ENV['RWS_AFFILIATION_ID'] # default: nil
 
     # (オプション) # リクエストの再送回数.
     # リクエスト数が制限を超過した場合, エンドポイントは # リクエスト数超過エラーを返します.

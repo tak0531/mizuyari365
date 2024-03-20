@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
     comment = current_user.comments.build(comment_params)
 
     if comment.save
-      redirect_to plant_path(comment.plant)
       flash[:success] = 'コメントを作成しました'
     else
       flash[:danger] = 'コメントの作成に失敗しました'
