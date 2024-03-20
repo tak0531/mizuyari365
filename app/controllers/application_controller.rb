@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
     @plants = @q.result(distinct: true).includes(:user).order(created_at: :desc)
   end
 
+
+
   private
 
   def not_authenticated

@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
 
     @plant_limit2 = @user.plants.order(created_at: :desc).limit(2)
-    p @w_cycle
     if @w_cycle.any? { |item| item.include?("3回以上水やりを忘れています。") }
     @items = RakutenWebService::Ichiba::Item.search(:keyword => '植物 自動給水機').first(3)
     end

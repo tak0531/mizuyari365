@@ -77,6 +77,14 @@ class PlantsController < ApplicationController
     redirect_to plants_path
   end
 
+  def suggest
+    query = params[:q].tr('ぁ-ん', 'ァ-ン')
+    @plants = Plant.where("name LIKE ? AND user_id != ? AND name LIKE ?", "#{query}%", current_user.id, "#{query}%").select(:name).distinct
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def plant_params
