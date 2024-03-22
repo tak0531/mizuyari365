@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
-
+  get 'product/search', to: 'products#search'
+  
   resources :users do
     get 'plants', to: 'users#search_index'
     post 'callback', to: 'users#callback'
@@ -33,4 +34,6 @@ Rails.application.routes.draw do
       patch 'watered', to: 'plants#watered'
     end
   end
+
+  resources :products
 end
