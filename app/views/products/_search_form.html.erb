@@ -1,0 +1,8 @@
+<div class="container flex justify-center">
+  <%= form_with url: new_product_path, method: :get, local: true do |f| %> 
+    <div>
+      <%= f.text_field :keyword, value: params[:keyword], style: 'width: 400px;', class: 'border border-gray-300 bg-white rounded-md px-4 py-2 mr-2 focus:outline-none focus:border-blue-500', placeholder: '登録したい商品を検索' %>
+      <%= f.submit '検索', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+<div class="bg-white shadow-md rounded-lg overflow-hidden items-center p-2">
+    <div class="container mx-auto">
+        <%= image_tag(result['mediumImageUrls'][0], size: '128x128') if result['mediumImageUrls'].present? %>
+        <%= truncate(result.name, length: 40) %>
+    </div>
+</div>
