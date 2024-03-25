@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :plants, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :products, dependent: :destroy
   has_many :like_plants, through: :likes, source: :plant
 
   has_one_attached :avatar
@@ -14,6 +15,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true, length: { maximum: 255 }
+
+  validate :validate_product_limit, on: :create
 
   def own?(object)
     id == object&.user_id
@@ -43,7 +46,9 @@ class User < ApplicationRecord
     created_at.strftime('%Y年%m月%d日')
   end
 
-  def forget_3times()
-
+  def validate_product_limit
+    if self.products.count >= 3
+      errors.add(:base, '商品を3つまでしか登録できません')
+    end
   end
 end

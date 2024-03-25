@@ -1,3 +1,16 @@
-<div class="container mx-auto flex justify-center mt-4">
-  <%= render 'products/search_form' %>
+<div class="mx-auto justify-center">
+  <div class="flex justify-center mt-4">
+    <h1 class="text-3xl">よく使う商品などを検索して登録できます</h1>
+  </div>
+  <div class="container mx-auto mt-2">
+    <div class="items-center">
+      <%= render 'products/search_form' %>
+    </div>
+    <div class="bg-white shadow-md rounded-lg overflow-hidden w-120 h-120 mb-12 flex-none mt-4">
+      <div class="p-4">
+        <h2 class="text-2xl mt-6 font-semibold mb-2">よく使う商品をMyページに表示しておけます</h2>
+        <%= image_tag 'favorite_product.jpg', class:'mt-6' %>
+      </div>
+    </div>
+  </div>
 </div>
