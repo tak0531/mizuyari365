@@ -8,9 +8,15 @@
       <div class="mr-2">
       </div>
       <%= render 'shared/search', q: @q, url: search_plants_path %>
+
+      <%= link_to product_search_path, class: 'text-gray hover:text-gray-900', title: '商品の登録ページ' do %>
+        <i class="fas fa-shopping-cart"></i>
+      <% end %>
+
       <%= link_to plants_path, class: 'text-gray hover:text-gray-900', title: 'My植物ページ' do %>
         <i class="fas fa-seedling"></i>
       <% end %>
+      
       <%= link_to user_path(current_user.id), class: 'text-gray hover:text-gray-900', title: 'Myページ' do %>
         <i class="fas fa-user"></i>
       <% end %>
