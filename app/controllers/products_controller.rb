@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
   before_action :check_product_limit, only: [:create]
 
-  def index
-  end
+  def index; end
 
   def new
     @results = []
@@ -17,7 +16,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(rakuten_params)
-    
     if @product.save
       flash[:success] = '商品を登録しました'
       redirect_to new_product_path, status: :unprocessable_entity

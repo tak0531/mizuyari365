@@ -76,7 +76,4 @@ class Plant < ApplicationRecord
     end
     result
   end
-  
-  def forget_3times_for7
-  end
 end

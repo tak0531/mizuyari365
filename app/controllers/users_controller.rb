@@ -13,12 +13,8 @@ class UsersController < ApplicationController
       redirect_to root_path, alert: "他のユーザーのプロフィールにはアクセスできません。"
       return
     end
-  
     @plant_limit2 = @user.plants.order(created_at: :desc).limit(2)
-    if @w_cycle.any? { |item| item.include?("3回以上水やりを忘れています。") }
-    @items = RakutenWebService::Ichiba::Item.search(:keyword => '植物 自動給水機').first(3)
-    end
-  
+    @items = RakutenWebService::Ichiba::Item.search(keyword: '植物 自動給水機').first(3) if @w_cycle.any? { |item| item.include?("3回以上水やりを忘れています。") }
   end
 
   def new
@@ -51,7 +47,6 @@ class UsersController < ApplicationController
       @user.destroy
       flash[:success] = 'アカウントを削除しました'
     end
-    
     redirect_to login_path
   end
 
@@ -112,10 +107,6 @@ class UsersController < ApplicationController
     @user.save
     flash[:success] = 'LINEの連携を解除しました。'
     redirect_to user_path(current_user)
-  end
-
-  def search_rakuten
-    @items = RakutenWebService::Ichiba::Item.search(:keyword => '植物 自動給水機')
   end
 
   private

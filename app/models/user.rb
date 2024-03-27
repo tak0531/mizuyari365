@@ -47,8 +47,6 @@ class User < ApplicationRecord
   end
 
   def validate_product_limit
-    if self.products.count >= 3
-      errors.add(:base, '商品を3つまでしか登録できません')
-    end
+    errors.add(:base, '商品を3つまでしか登録できません') if products.count >= 3
   end
 end
