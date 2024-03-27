@@ -5,8 +5,26 @@
         </div>
     </div>
     <div class="container mx-auto">
-      <div class="flex bg-green-200 grid grid-col-1 gap-4 md:grid-cols-3 lg:grid-cols-3 row-span-5 mx-4 mb-12">
-          <%= render partial: "result_plant", collection: @plants, as: 'plant'  %>
-      </div>
+        <% if @plants.present? %>
+        <div class="flex bg-green-200 grid grid-col-1 gap-4 md:grid-cols-3 lg:grid-cols-3 row-span-5 mx-4 mb-12">
+            <%= render partial: "result_plant", collection: @plants, as: 'plant'  %>
+        </div>
+        <% else %>
+        <div class="container flex justify-center">
+            <div class="flex justify-center bg-white shadow-md rounded-lg overflow-hidden w-120 h-100 mb-12 flex-none mt-4">
+                <div class="container p-4">
+                    <div class="flex justify-center">
+                        <%= image_tag 'sorry.png', size:'400x300' %>
+                    </div>
+                    <div class="flex justify-center">
+                        <h1 class="text-3xl">登録されている植物が見つかりませんでした</h1>
+                    </div>
+                    <div class="flex justify-center mt-4">
+                        <p>別のワードで検索してください</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% end %>
     </div>
 </div>
