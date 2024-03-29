@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to user_path(@user)
+      redirect_to mypage_path
 
       flash[:success] = "ログインに成功しました"
     else
