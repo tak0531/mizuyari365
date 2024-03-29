@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index; end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(current_user[:id])
     @plants = @user.plants.order(created_at: :desc)
     @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
     @products = @user.products.order(created_at: :desc)
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login(user_params[:email], user_params[:password])
-      redirect_to user_path(@user)
+      redirect_to mypage_path
       flash[:success] = "アカウントを作成しました"
     else
 
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
           else
             client.push_message(user_line_id, { type: 'text', text: "メールアドレスが存在しませんでした。" })
           end
-        elsif event_text !~ /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/
+        elsif !(event_text =~ /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/)
           @user = User.find_by(line_id: user_line_id)
           @plants = @user.plants.to_a
           @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
@@ -106,7 +106,7 @@ class UsersController < ApplicationController
     @user.line_id = nil
     @user.save
     flash[:success] = 'LINEの連携を解除しました。'
-    redirect_to user_path(current_user)
+    redirect_to mypage_path
   end
 
   private

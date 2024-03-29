@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
   get 'product/search', to: 'products#search'
-  resources :users do
+  get 'mypage', to: 'users#show'
+  resources :users, only: %i[index new edit create update destroy] do
     get 'plants', to: 'users#search_index'
     post 'callback', to: 'users#callback'
     patch 'delete_line_id', to: 'users#delete_line_id'

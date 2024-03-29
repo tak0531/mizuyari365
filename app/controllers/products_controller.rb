@@ -30,11 +30,11 @@ class ProductsController < ApplicationController
     @user = current_user.id
 
     if @product.destroy
-      redirect_to user_path(@user)
+      redirect_to mypage_path
       flash[:success] = '登録していた商品を削除しました'
     else
       flash.now[:danger] = "植物の削除に失敗しました"
-      render user_path(@user), status: :unprocessable_entity
+      render mypage_path, status: :unprocessable_entity
     end
   end
 
@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   def check_product_limit
     if current_user.products.count >= 3
       flash[:danger] = '商品を3つまでしか登録できません'
-      redirect_to user_path(current_user)
+      redirect_to mypage_path
     end
   end
 end
