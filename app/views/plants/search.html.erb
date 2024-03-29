@@ -1,12 +1,14 @@
-<div class="min-h-screen bg-green-200 flex flex-col">
+<div class="min-h-screen flex flex-col">
     <div class="mx-auto justify-start mb-6">
-        <div class="flex justify-end bg-green-200">
-            <div class="mt-4 mb-4 text-gray-400 hover:text-gray-900 text-2xl flex justify-between bg-green-200"></div>           
+        <div class="flex justify-end">
+            <div class="mt-4 mb-2 text-2xl flex justify-between">
+                <h1 class="text-3xl">検索結果</h1>
+            </div>           
         </div>
     </div>
     <div class="container mx-auto">
         <% if @plants.present? %>
-        <div class="flex bg-green-200 grid grid-col-1 gap-4 md:grid-cols-3 lg:grid-cols-3 row-span-5 mx-4 mb-12">
+        <div class="flex grid grid-col-1 gap-4 md:grid-cols-3 lg:grid-cols-3 row-span-5 mx-4 mb-12">
             <%= render partial: "result_plant", collection: @plants, as: 'plant'  %>
         </div>
         <% else %>
@@ -20,7 +22,7 @@
                         <h1 class="text-3xl">登録されている植物が見つかりませんでした</h1>
                     </div>
                     <div class="flex justify-center mt-4">
-                        <p>別のワードで検索してください</p>
+                        <p>別の植物を検索してみてください</p>
                     </div>
                 </div>
             </div>
