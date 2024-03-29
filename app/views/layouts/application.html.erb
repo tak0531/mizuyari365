@@ -11,7 +11,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="flex flex-col overflow-auto">
+  <body class="flex flex-col overflow-auto bg-gray-100">
     <div class="footerFixed">
       <% if logged_in? %>
         <%= render 'shared/header' %>

@@ -1,6 +1,6 @@
 <%= search_form_for @q, url: url, html: { class: "flex items-center" }, remote: true do |f| %>
 <div data-controller="autocomplete" data-autocomplete-url-value="/plants/suggest" role="combobox">
-  <%= f.search_field :name_cont, data: { autocomplete_target: 'input' }, class: 'border border-gray-300 bg-white rounded-md px-4 py-2 mr-2 focus:outline-none focus:border-blue-500', placeholder: '植物名を検索' %>
+  <%= f.search_field :name_cont, data: { autocomplete_target: 'input' }, class: 'border border-gray-300 bg-white rounded-md px-4 py-2 mr-2 focus:outline-none focus:border-blue-500', style: 'width: 235px;', placeholder: '他のユーザーの植物を検索' %>
   <%= f.hidden_field :name, data: { autocomplete_target: 'hidden' } %>
   <ul class="list-group bg-white absolute w-full md:text-sm max-w-max z-10" data-autocomplete-target="results"></ul>
   <%= f.submit '検索', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
