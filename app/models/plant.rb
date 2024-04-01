@@ -76,4 +76,10 @@ class Plant < ApplicationRecord
     end
     result
   end
+
+  def count_like(all_plants)
+    all_plants.each do |plant|
+      number_of_like = plant.likes.count
+    end
+  end
 end

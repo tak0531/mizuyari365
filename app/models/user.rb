@@ -16,8 +16,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :name, presence: true, length: { maximum: 255 }
 
-  validate :validate_product_limit, on: :create
-
   def own?(object)
     id == object&.user_id
   end
@@ -44,9 +42,5 @@ class User < ApplicationRecord
 
   def formatted_created_at
     created_at.strftime('%Y年%m月%d日')
-  end
-
-  def validate_product_limit
-    errors.add(:base, '商品を3つまでしか登録できません') if products.count >= 3
   end
 end

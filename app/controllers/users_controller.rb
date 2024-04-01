@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @plants = @user.plants.order(created_at: :desc)
     @w_cycle = @plants.map { |plant| plant.watering_cycle(plant) }
     @products = @user.products.order(created_at: :desc)
+    @popular_plants = Plant.left_joins(:likes).group(:id).order('COUNT(likes.id) DESC').limit(3)
     unless current_user == @user
       redirect_to root_path, alert: "他のユーザーのプロフィールにはアクセスできません。"
       return

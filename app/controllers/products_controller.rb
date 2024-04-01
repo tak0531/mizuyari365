@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :check_product_limit, only: [:create]
-
-  def index; end
+  def index
+    @products = current_user.products.all
+  end
 
   def new
     @results = []
