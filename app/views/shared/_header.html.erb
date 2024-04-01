@@ -9,6 +9,8 @@
       </div>
       <%= render 'shared/search', q: @q, url: search_plants_path %>
 
+      <%= link_to '商品一覧', products_path %>
+
       <%= link_to product_search_path, class: 'text-gray hover:text-gray-900', title: '商品の登録ページ' do %>
         <i class="fas fa-shopping-cart"></i>
       <% end %>
