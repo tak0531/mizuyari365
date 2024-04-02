@@ -41,6 +41,8 @@ class ProductsController < ApplicationController
   def search
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
+    popular_product_names = Product.where(name: Product.group(:name).having("COUNT(*) > 1").pluck(:name))
+    @popular_products = popular_product_names.select(:name,:product_image,:rakuten_url,:price).distinct
   end
 
   private

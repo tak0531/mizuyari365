@@ -1,0 +1,7 @@
+<div class="bg-white shadow-md rounded-lg overflow-hidden items-center p-2">
+    <%= image_tag(product.product_image, size: "250x180") %>
+    <div class="container mx-auto mb-2 mt-2">
+        <h2 class="text-xl font-semibold mt-2 break-words"><%= link_to truncate(product.name, length: 50), product.rakuten_url, target: "_blank" %></h2>
+        <p class="text-xl text-gray-700"><%= number_with_delimiter(product.price) %>円</p>
+    </div>
+</div>
