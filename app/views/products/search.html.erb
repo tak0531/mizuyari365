@@ -8,8 +8,10 @@
     </div>
     <div class="bg-white shadow-md rounded-lg overflow-hidden w-120 h-120 mb-12 flex-none mt-4">
       <div class="p-4">
-        <h2 class="text-2xl mt-6 font-semibold mb-2">よく使う商品をMyページに表示しておけます</h2>
-        <%= image_tag 'favorite_product.jpg', class:'mt-6' %>
+        <h2 class="text-2xl mt-6 font-semibold mb-2">今よく登録されている商品TOP3</h2>
+          <div class="flex grid grid-col-1 gap-4 md:grid-cols-3 lg:grid-cols-3 row-span-5 mx-4 mb-12">
+            <%= render partial: "popular_product", collection: @popular_products, as: 'product' %>
+          </div>
       </div>
     </div>
   </div>

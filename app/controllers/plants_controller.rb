@@ -78,8 +78,11 @@ class PlantsController < ApplicationController
   end
 
   def suggest
-    query = params[:q].tr('ぁ-ん', 'ァ-ン')
-    @plants = Plant.where("name LIKE ? AND user_id != ? AND name LIKE ?", "#{query}%", current_user.id, "#{query}%").select(:name).distinct
+    query = params[:q].tr('ァ-ン', 'ぁ-ん')
+    query_katakana = params[:q].tr('ぁ-ん', 'ァ-ン')
+    @plants_hiragana = Plant.where("name LIKE ? AND user_id != ?", "#{query}%", current_user.id).select(:name).distinct
+    @plants_katakana = Plant.where("name LIKE ? AND user_id != ?", "#{query_katakana}%", current_user.id).select(:name).distinct
+    @plants = (@plants_hiragana + @plants_katakana).uniq
     respond_to do |format|
       format.js
     end
