@@ -2,6 +2,7 @@
 import '@hotwired/turbo-rails';
 import './custom/preview.js';
 import './custom/fade.js';
+import './custom/dropdown.js';
 
 import { Application } from '@hotwired/stimulus'
 import { Autocomplete } from 'stimulus-autocomplete'
