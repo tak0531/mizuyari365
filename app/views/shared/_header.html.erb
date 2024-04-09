@@ -13,22 +13,22 @@
           メニュー <i class="fas fa-caret-down"></i>
         </button>
         <div class="absolute top-full left-0 bg-white border border-gray-300 p-4 hidden z-10" id="headerDropdown", data-turbo="false">
-          <ul>
+          <ul class="w-24">
             <li>
               <%= link_to products_path, class: 'text-gray hover:text-gray-900', title: '商品一覧', data: {"turbo" => false} do %>
-              <i class="fas fa-list mr-1"></i>
+              <i class="fas fa-list mx-1 mt-1">商品一覧</i>
               <% end %>
             </li>
 
             <li>
               <%= link_to product_search_path, class: 'text-gray hover:text-gray-900', title: '商品の登録ページ', data: {"turbo" => false} do %>
-                <i class="fas fa-search mr-1"></i>
+                <i class="fas fa-search mx-1 mt-1 ">商品登録</i>
               <% end %>
             </li>
             
             <li>
               <%= link_to plants_path, class: 'text-gray hover:text-gray-900', title: 'My植物ページ', data: {"turbo" => false} do %>
-                <i class="fas fa-leaf mr-1"></i>
+                <i class="fas fa-leaf mx-1 mt-1">My植物</i>
               <% end %>
             </li>   
           </ul>
@@ -42,13 +42,13 @@
           <ul>
             <li>
               <%= link_to mypage_path, class: 'text-gray hover:text-gray-900', title: 'Myページ', data: {"turbo" => false} do %>
-                <i class="fas fa-user"></i>
+                <i class="fas fa-user mx-1 mt-1"></i>
               <% end %>
             </li>
 
             <li>
               <%= link_to logout_path, method: :delete, data: { turbo_method: :delete }, class: 'text-gray hover:text-gray-900', title: 'ログアウト' do %>
-                <i class="fas fa-sign-out-alt"></i>
+                <i class="fas fa-sign-out-alt mx-1 mt-1"></i>
               <% end %>
             </li>
           </ul>
