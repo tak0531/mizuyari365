@@ -1,5 +1,5 @@
 # 水やりKeeper
-<img src="https://github.com/tak0531/mizuyari365/assets/131232225/bcbf69cb-c858-4804-84b9-9f80dd7c61fe" width="150">
+<img src="https://github.com/tak0531/mizuyari365/assets/131232225/bcbf69cb-c858-4804-84b9-9f80dd7c61fe" width="200">
 
 ## サービスURL
 : https://mizuyarikeeper.com/
