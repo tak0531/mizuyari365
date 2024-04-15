@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   function fadeInImage() {
     const image = document.getElementById("fadeInImage");
-    if (image) { // 要素が見つかった場合のみ実行
+    if (image) { 
       let opacity = 0;
       const intervalId = setInterval(function() {
         opacity += 0.01;
