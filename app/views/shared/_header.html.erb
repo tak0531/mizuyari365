@@ -12,7 +12,7 @@
         <button class="btn btn-lg mx-3 menu-button text-gray hover:underline transition duration-300">
           メニュー <i class="fas fa-caret-down"></i>
         </button>
-        <div class="absolute top-full left-0 bg-white border border-gray-300 p-4 hidden z-10" id="headerDropdown", data-turbo="false">
+        <div class="absolute top-full left-0 bg-white border border-gray-300 p-4 hidden z-10 rounded-lg" id="headerDropdown", data-turbo="false">
           <ul class="w-24">
             <li>
               <%= link_to products_path, class: 'text-gray hover:text-gray-900', title: '商品一覧', data: {"turbo" => false} do %>
@@ -38,7 +38,7 @@
         <button class="btn btn-lg mx-3 menu-button text-gray hover:underline transition duration-300">
           ユーザー <i class="fas fa-caret-down"></i>
         </button>
-        <div class="absolute top-full left-0 bg-white border border-gray-300 p-4 hidden z-10" id="header2Dropdown">
+        <div class="absolute top-full left-0 bg-white border border-gray-300 p-4 hidden z-10 rounded-lg" id="header2Dropdown">
           <ul>
             <li>
               <%= link_to mypage_path, class: 'text-gray hover:text-gray-900', title: 'Myページ', data: {"turbo" => false} do %>
