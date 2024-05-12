@@ -1,8 +1,9 @@
 <div class="flex min-h-screen overflow-hidden ">
     <div class="container p-4 mx-auto overflow-hidden">
         <div class="mx-auto bg-white shadow-md rounded-lg  mb-12">
-            <div class="border p-2 text-xl font-bold">
+            <div class="border p-2 text-xl font-bold flex justify-between">
                 <h2><%= @plant.name %></h2>
+                <h2>水やり推奨日：<%= @water_day %></h2>     
             </div>
 
           <!-- 植物の画像 -->
@@ -17,7 +18,7 @@
             <div class="border p-2">
                 <div class="flex justify-between items-center">
                     <div class="mr-4">
-                        水やり推奨日：<%= @water_day %>
+                        鉢替え予定日：<%= @new_pot %>
                     </div>
                     <div class="p-2">
                         <p class="text-gray-600">

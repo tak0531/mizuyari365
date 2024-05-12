@@ -17,6 +17,7 @@ class PlantsController < ApplicationController
                  else
                    d11_watering = last_w_day + 11.days
                  end
+    @new_pot = @plant.plants_actions.last&.new_pot
   end
 
   def new
@@ -25,11 +26,12 @@ class PlantsController < ApplicationController
 
   def edit
     @plant = Plant.find(params[:id])
+    @plant_actions = @plant.plants_actions
   end
 
   def create
     @plant = current_user.plants.build(plant_params)
-    @plants_action = @plant.plants_actions.build(last_watered: params[:plant][:last_watered], user_id: current_user.id)
+    @plants_action = @plant.plants_actions.build(last_watered: params[:plant][:last_watered], new_pot: params[:plant][:new_pot], user_id: current_user.id)
 
     if @plant.save && @plants_action.save
       redirect_to plants_path
@@ -42,9 +44,10 @@ class PlantsController < ApplicationController
 
   def update
     @plant = Plant.find(params[:id])
+    @plant_actions = @plant.plants_actions
 
-    if @plant.update(plant_params)
-      redirect_to plants_path
+    if @plant.update(plant_params) && @plant_actions.update(new_pot: params[:plant][:new_pot])
+      redirect_to plant_path(@plant)
     else
       render :edit
     end
@@ -92,6 +95,10 @@ class PlantsController < ApplicationController
 
   def plant_params
     params.require(:plant).permit(:name, :content, :image, :user_id, :family)
+  end
+
+  def plants_actions_params
+    params.require(:plants_actions).permit(:new_pot)
   end
 
   def correct_user
